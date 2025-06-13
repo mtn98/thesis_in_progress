@@ -6,7 +6,7 @@ Data comes from the [Reddit Politosphere dataset](https://zenodo.org/records/585
 1. **info.py** - creates txt files storing relevant subreddits for later use.
 2. **extract_preprocess.py** - creates txt files containing the extracted and preprocessed reddit comments from the subreddit subset under consideration. One txt file per presidency.
 3. **train_word2vec.py** -  trains word2vec emebeddings. From terminal, state the txt corpus file and a directory in which to store the model. E.g. train_word2vec.py comments_Obama2_DEM.txt Obama2_DEM_400D will create the Obama2_DEM_400D directory and store the embeddings trained on the comments_Obama2_DEM.txt corpus.
-4. **evaluating_models.py** - used to assess how well the trained embeddings capture semantic relationships among [MEN dataset's](https://staff.fnwi.uva.nl/e.bruni/MEN) word pairs ([Bruni et al., 2013](https://staff.fnwi.uva.nl/e.bruni/publications/bruni2014multimodal.pdf)
+4. **evaluating_models.py** - used to assess how well the trained embeddings capture semantic relationships among [MEN dataset's](https://staff.fnwi.uva.nl/e.bruni/MEN) word pairs ([Bruni et al., 2013](https://staff.fnwi.uva.nl/e.bruni/publications/bruni2014multimodal.pdf)).
 
 ## Toward the creation of word-sets for [ML-EAT](https://github.com/wolferobert3/ml-eat) (Wolfe et al., 2024)
 ### Accessing, extracting and attributing valence to [SADCAT dictionaries](https://github.com/gandalfnicolas/SADCAT) (Nicolas et al., 2021)
