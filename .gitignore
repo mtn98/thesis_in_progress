@@ -4,7 +4,7 @@ __pycache__/
 *.pyd
 
 *..ipynb 
-
+.Rhistory
 .DS_Store
 
 .ipynb_checkpoints/
@@ -14,7 +14,12 @@ __pycache__/
 *.bz2
 *.csv
 *.json
+!/embeddings/word_pairs_eval.json
+
 *.txt
+!/embeddings/REP_subs.txt
+!/embeddings/US_subs.txt
+!/embeddings/DEM_subs.txt
 
 env/
 .venv/
