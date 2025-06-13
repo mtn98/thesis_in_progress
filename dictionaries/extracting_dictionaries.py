@@ -7,19 +7,10 @@ import json
 
 path = Path('Full_Dictionaries.csv')
 df = pd.read_csv(path)
-
-#dictionary_columns = [col for col in df.columns if "dictionary" in col]
-#print("Available dictionary columns:\n", dictionary_columns)
-
 of_interest_dict = ['Sociability','Morality', 'Ability', 'Agency']
 
-nice_extras = ['Politics', 'insults', 'social_groups']
+#nice_extras = ['Politics', 'insults', 'social_groups']
 
-#for future use
-#warmth =['Sociability', 'Morality']
-#competence = ['Ability', 'Agency']
-
-#here we create the list of column headers that we'll use to export what we need 
 word_columns = [
     'original word',
     'preprocessed word 2 (no spaces)',
@@ -27,7 +18,15 @@ word_columns = [
     'preprocessed word 4 (minus one trailing s)'
 ]
 
-
+#currently saves txt files for each dictionaryXdirection, will be changed to saving 
+#one json file, with a (python) dictionary structure like:
+#   dimension: {
+#               high: []
+#               low: []}
+#   dimension: {
+#               high: []
+#               low: []}
+#this will be done after resolving the valence issues and most likely by only considering SADCAT_dictionaries.csv, i.e. Full_Diictionaries.csv won't be used
 for dict_name in of_interest_dict:
     col_name = f"{dict_name} dictionary" 
     dir_col = f"{dict_name} direction"

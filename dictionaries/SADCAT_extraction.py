@@ -1,13 +1,13 @@
 from pathlib import Path
 import pandas as pd
 
-path = Path('Pre_Dictionaries.csv')  #accessed from R package 'SADCAT' - SADCAT_dict.R
+path = Path('SADCAT_dictionaries.csv')  #accessed from R package 'SADCAT' - SADCAT_dict.R
 path1 = Path('BRM-emot-submit.csv') #downloaded at: https://link.springer.com/article/10.3758/s13428-012-0314-x#SecESM1
 
 df = pd.read_csv(path)
 df1 = pd.read_csv(path1)
 
-#NB: within Pre_Dictionaries.csv Agency = Assertiveness
+#NB: within SADCAT_dictionaries.csv Agency = Assertiveness
 of_interest_dict = ['Sociability','Morality', 'Ability', 'Assertiveness']
 
 #adding valence to SADACT from BRM-emot
@@ -17,6 +17,17 @@ df['valence']=df['valence']-5
 
 infos = []
 #EXPORTING CSV FILES for later use + storing some infos :
+
+#currently saves csv files for each dictionaryXdirection, will be changed to saving 
+#one json file, with a (python) dictionary structure like:
+#   dimension: {
+#               high: []
+#               low: []}
+#   dimension: {
+#               high: []
+#               low: []}
+#this will be done after resolving the valence issues
+
 for dict_name in of_interest_dict:
     col_name = f"{dict_name}_dict"
     dir_cols = {                    
