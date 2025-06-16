@@ -40,11 +40,11 @@ for dict_name in of_interest_dict:
     direction_col= f"{dict_name}_dir"
     valence_cols =[f'{col_name}_Pos',f'{col_name}_Neg']
     subset = df[df[col_name] ==1]
-    of_interest_columns = ['values0', direction_col, 'val', 'valence']
+    of_interest_columns = ['values0', direction_col, 'Val', 'valence']
     tot = len(subset)
 
     #saving csv of each dimension to later inspect  - remove '#' if desired
-    #subset.to_csv(f'{dict_name}.csv')
+    subset[of_interest_columns].to_csv(f'{dict_name}.csv')
 
     high = subset[subset[direction_col] == 1]
     low = subset[subset[direction_col] == -1]
