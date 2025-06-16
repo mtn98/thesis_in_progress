@@ -8,12 +8,12 @@ import pandas as pd
 import json
 import copy
 
-Path("dictionaries").mkdir(parents=True, exist_ok=True)
-Path("dictionaries/SADCAT").mkdir(parents=True, exist_ok=True)
-Path("dictionaries/seed").mkdir(parents=True, exist_ok=True)
-path = Path('dictionaries/SADCAT_dictionaries.csv')  #accessed from R package 'SADCAT' - SADCAT_dict.R
-path1 = Path('dictionaries/BRM-emot-submit.csv') #downloaded at: https://link.springer.com/article/10.3758/s13428-012-0314-x#SecESM1
-path2 = Path('dictionaries/Seed_Dictionaries.csv') #downloaded from https://osf.io/yx45f/files/osfstorage
+
+Path("SADCAT").mkdir(parents=True, exist_ok=True)
+Path("seed").mkdir(parents=True, exist_ok=True)
+path = Path('SADCAT_dictionaries.csv')  #accessed from R package 'SADCAT' - SADCAT_dict.R
+path1 = Path('BRM-emot-submit.csv') #downloaded at: https://link.springer.com/article/10.3758/s13428-012-0314-x#SecESM1
+path2 = Path('Seed_Dictionaries.csv') #downloaded from https://osf.io/yx45f/files/osfstorage
 df = pd.read_csv(path)
 df1 = pd.read_csv(path1)
 df2= pd.read_csv(path2)
@@ -64,14 +64,14 @@ for dict_name in of_interest_dict:
     #saving csv of each dimension to later inspect  - remove '#' if desired
     #dimension = dimension.copy()
     #dimension['Dir'] = dimension['Dir'].replace({'high': 1, 'low': -1}).astype(int)
-    #dimension[['term','valence','Dir']].to_csv(f'dictionaries/seed/seed_{dict_name}.csv', index=False)
+    #dimension[['term','valence','Dir']].to_csv(f'seed/seed_{dict_name}.csv', index=False)
 
     seed_wordset['A'] = high_s['term'].to_list()
     seed_wordset['A_name'] = f'high {dict_name}'
     seed_wordset['B'] =low_s['term'].tolist()
     seed_wordset['B_name'] = f'low {dict_name}'
     seed_wordset['eat_name'] = f'seed {dict_name}'
-    json_seed = f'dictionaries/{dict_name}_seed_wordset.json'
+    json_seed = f'{dict_name}_seed_wordset.json'
     with open(json_seed, "w", encoding="utf-8") as f:
         json.dump(seed_wordset, f, ensure_ascii=False, indent= 2)
 
@@ -84,7 +84,7 @@ for dict_name in of_interest_dict:
     subset = df[df[col_name] ==1]
     tot = len(subset)
     #saving csv of each dimension to later inspect  - remove '#' if desired
-    #subset[of_interest_columns].to_csv(f'dictionaries/SADCAT/{dict_name}.csv', index=False)
+    #subset[of_interest_columns].to_csv(f'SADCAT/{dict_name}.csv', index=False)
 
     high = subset[subset[direction_col] == 1]
     low = subset[subset[direction_col] == -1]
@@ -100,7 +100,7 @@ for dict_name in of_interest_dict:
     SADCAT_wordset['B_name'] = f'low-negarive {dict_name}'
     SADCAT_wordset['eat_name'] = dict_name
 
-    json_SADCAT = f'dictionaries/{dict_name}_consistant_wordset.json'
+    json_SADCAT = f'{dict_name}_consistant_wordset.json'
     with open(json_SADCAT, "w", encoding="utf-8") as f:
         json.dump(SADCAT_wordset, f, ensure_ascii=False, indent= 2)
 
@@ -116,7 +116,7 @@ for dict_name in of_interest_dict:
 
     summary_df.loc[len(summary_df)] = [dict_name, tot, n_high, n_high_pos, n_high_neg, n_high_issues, n_low, n_low_pos, n_low_neg, n_low_issues]
 
-summary_df.to_csv('dictionaries/summary.csv')   
+summary_df.to_csv('summary.csv')   
 
 
 
