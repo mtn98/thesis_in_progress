@@ -62,7 +62,9 @@ for dict_name in of_interest_dict:
     dimension['Dir'] = dimension['Dir'].replace({'high': 1, 'low': -1}).astype(int)
 
     #saving csv of each dimension to later inspect  - remove '#' if desired
-    dimension[['term','valence','Dir']].to_csv(f'dictionaries/seed/seed_{dict_name}.csv', index=False)
+    #dimension = dimension.copy()
+    #dimension['Dir'] = dimension['Dir'].replace({'high': 1, 'low': -1}).astype(int)
+    #dimension[['term','valence','Dir']].to_csv(f'dictionaries/seed/seed_{dict_name}.csv', index=False)
 
     seed_wordset['A'] = high_s['term'].to_list()
     seed_wordset['A_name'] = f'high {dict_name}'
@@ -82,7 +84,7 @@ for dict_name in of_interest_dict:
     subset = df[df[col_name] ==1]
     tot = len(subset)
     #saving csv of each dimension to later inspect  - remove '#' if desired
-    subset[of_interest_columns].to_csv(f'dictionaries/SADCAT/{dict_name}.csv', index=False)
+    #subset[of_interest_columns].to_csv(f'dictionaries/SADCAT/{dict_name}.csv', index=False)
 
     high = subset[subset[direction_col] == 1]
     low = subset[subset[direction_col] == -1]
