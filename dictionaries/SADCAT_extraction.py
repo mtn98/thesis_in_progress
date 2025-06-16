@@ -80,7 +80,7 @@ for dict_name in of_interest_dict:
     direction_col= f"{dict_name}_dir"
     valence_cols =[f'{col_name}_Pos',f'{col_name}_Neg']
     
-    of_interest_columns = ['values0', direction_col, 'Val', 'valence']
+    of_interest_columns = ['values0', direction_col, 'Val', 'valence', f'{col_name}_Pos',f'{col_name}_Neg']
     subset = df[df[col_name] ==1]
     tot = len(subset)
     #saving csv of each dimension to later inspect  - remove '#' if desired
